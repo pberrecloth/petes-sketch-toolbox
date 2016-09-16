@@ -65,13 +65,18 @@
     },
   ],
   "menu" : {
-    "title": "Selection Tools",
+    "isRoot" : true,
     "items" : [
-      "select-parent-artboards",
-      "select-all-artboards",
-      "select-starting-with",
-      "select-ending-with",
-      "select-containing",
+      {
+        "title" : "Select",
+        "items" : [
+          "select-parent-artboards",
+          "select-all-artboards",
+          "select-starting-with",
+          "select-ending-with",
+          "select-containing",
+        ]
+      }
     ],
   }
 }

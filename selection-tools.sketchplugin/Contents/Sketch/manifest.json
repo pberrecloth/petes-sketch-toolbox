@@ -1,46 +1,25 @@
 {
-  "name": "Icon Toolbox",
-  "description" : "A set of tools for a perfect icon workflow in Sketch.",
-  "author" : "Peter Berrecloth",
+  "name": "Selection Tools",
+  "description" : "A bundle of plugins for selecting stuff.",
+  "author" : "Peter Berrecloth and Others",
   "homepage": "https://github.com/pberrecloth/icon-toolbox-sketch-plugin",
   "version": "0.1",
-  "identifier" : "com.pberrecloth.icon-toolbox",
+  "identifier" : "com.pberrecloth.selection-tools",
   "compatibleVersion": "39.1",
   "bundleVersion": 1,
   "commands" : [
-    {
-      "name" : "Flatten Selected Artwork",
-      "identifier": "flatten",
-      "script" : "flattenSelectedArtwork.js",
-      "handler" : "flattenSelectedArtwork",
-      "shortcut" : "cmd shift ;",
-    },
-    {
-      "name" : "Create Artboards",
-      "identifier": "createArtboards",
-      "script" : "createArtboards.js",
-      "handler" : "createArtboards",
-    },
-    {
-      "name" : "Create Bounds",
-      "identifier": "createBounds",
-      "script" : "createBounds.js",
-      "handler" : "createBounds",
-    },
-    {
-      "name" : "Slice Selection",
-      "identifier": "sliceSelection",
-      "script" : "sliceSelection.js",
-      "handler" : "sliceSelection",
-    }
-  ],
+      {
+        "script" : "selectParentArtboards.cocoascript",
+        "handler" : "selectParentArtboards",
+        "shortcut" : "cmd ctrl a",
+        "name" : "Select Parent Artboards",
+        "identifier" : "selectParentArtboards"
+      }
+    ],
   "menu" : {
-    "title": "Icon Toolbox",
+    "title": "Selection Tools",
     "items" : [
-      "flatten",
-      "createBounds",
-      "createArtboards",
-      "sliceSelection"
+      "selectParentArtboards",
     ],
   }
 }

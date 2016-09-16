@@ -156,6 +156,34 @@
       "script" : "plugins/rename-it/findReplace.sketchscript",
       "handler" : "findReplace",
       "shortcut" : "ctrl option cmd r"
+    },
+    {
+      "name" : "Toggle Grid",
+      "script" : "plugins/grid-toggler/script.cocoascript",
+      "shortcut" : "ctrl g",
+      "handler" : "toggleGridOnSelection",
+      "identifier" : "toggle-grid-on-selection"
+    },
+    {
+    "name" : "Toggle Layout",
+    "script" : "plugins/grid-toggler/script.cocoascript",
+    "shortcut" : "ctrl l",
+    "handler" : "toggleLayoutOnSelection",
+    "identifier" : "toggle-layout-on-selection"
+    },
+    {
+    "name" : "Toggle Grid on All Artboards",
+    "script" : "plugins/grid-toggler/script.cocoascript",
+    "shortcut" : "ctrl shift g",
+    "handler" : "toggleGridOnAllArtboards",
+    "identifier" : "toggle-grid-on-all-artboards"
+    },
+    {
+    "name" : "Toggle Layout on All Artboards",
+    "script" : "plugins/grid-toggler/script.cocoascript",
+    "shortcut" : "ctrl shift l",
+    "handler" : "toggleLayoutOnAllArtboards",
+    "identifier" : "toggle-layout-on-all-artboards"
     }
   ],
   "menu" : {
@@ -185,6 +213,16 @@
         "items" : [
           "toggle-layers",
           "toggle-layers-settings"
+        ]
+      },
+      {
+        "title" : "Grid",
+        "items" : [
+          "toggle-grid-on-selection",
+          "toggle-layout-on-selection",
+          "-",
+          "toggle-grid-on-all-artboards",
+          "toggle-layout-on-all-artboards"
         ]
       },
       {

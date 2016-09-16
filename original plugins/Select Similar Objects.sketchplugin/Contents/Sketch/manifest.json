@@ -1,0 +1,62 @@
+{
+  "author" : "Wessley Roche",
+  "commands" : [
+    {
+      "script" : "script.cocoascript",
+      "handler" : "selectSameFill",
+      "shortcut" : "ctrl alt 1",
+      "name" : "Fill Color",
+      "identifier" : "selectSameFill"
+    },
+	{
+      "script" : "script.cocoascript",
+      "handler" : "selectSameBorder",
+      "shortcut" : "ctrl alt 2",
+      "name" : "Border Color",
+      "identifier" : "selectSameBorder"
+    },
+	{
+      "script" : "script.cocoascript",
+      "handler" : "selectSameBorderThickness",
+      "shortcut" : "ctrl alt 3",
+      "name" : "Border Thickness",
+      "identifier" : "selectSameBorderThickness"
+    },
+	{
+      "script" : "script.cocoascript",
+      "handler" : "selectSameFont",
+      "shortcut" : "ctrl alt 4",
+      "name" : "Font",
+      "identifier" : "selectSameFont"
+    },
+	{
+      "script" : "script.cocoascript",
+      "handler" : "selectSameOpacity",
+      "shortcut" : "ctrl alt 5",
+      "name" : "Opacity",
+      "identifier" : "selectSameOpacity"
+    },
+	{
+      "script" : "script.cocoascript",
+      "handler" : "selectSameBlendMode",
+      "shortcut" : "ctrl alt 6",
+      "name" : "Blend Mode",
+      "identifier" : "selectSameBlendMode"
+    }
+  ],
+  "menu": {
+    "items": [
+      "selectSameFill",
+	  "selectSameBorder",
+	  "selectSameFont",
+	  "selectSameBorderThickness",
+	  "selectSameOpacity",
+	  "selectSameBlendMode"
+    ]
+  },
+  "identifier" : "me.wessley.selectSimilarLayers",
+  "version" : "1.0",
+  "description" : "A plugin that selects layers with similar attributes to those of the layer currently selected.",
+  "authorEmail" : "wessley@mac.com",
+  "name" : "Select Layers with the Same…"
+}

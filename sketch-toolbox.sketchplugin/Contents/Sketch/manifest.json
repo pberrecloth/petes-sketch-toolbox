@@ -126,13 +126,13 @@
       "identifier" : "rename-find-replace-all"
     },
     {
-      "name" : "Append",
+      "name" : "Append Selected",
       "script" : "plugins/layer-tools/src/rename.js",
       "handler" : "appendToSelected",
       "identifier" : "rename-append-selected"
     },
     {
-      "name" : "Prepend",
+      "name" : "Prepend Selected",
       "script" : "plugins/layer-tools/src/rename.js",
       "handler" : "prependSelected",
       "identifier" : "rename-prepend-selected"

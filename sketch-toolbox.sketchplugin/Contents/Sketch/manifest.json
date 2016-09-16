@@ -1,0 +1,201 @@
+{
+  "name": "Sketch Toolbox",
+  "description" : "A bundle of plugin favourites",
+  "author" : "Various Authors",
+  "homepage": "https://github.com/pberrecloth/petes-sketch-toolbox",
+  "version": "0.1",
+  "identifier" : "com.various.sketch-toolbox",
+  "compatibleVersion": "39.1",
+  "bundleVersion": 1,
+  "commands" : [
+    {
+      "name" : "All Shapes",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectAllShapes",
+      "identifier" : "select-all-shapes"
+    },
+    {
+      "name" : "All Text Layers",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectAllTextLayers",
+      "identifier" : "select-all-textlayers"
+    },
+    {
+      "name" : "All Artboards",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectAllArtboards",
+      "shortcut" : "cmd shift a",
+      "identifier" : "select-all-artboards"
+    },
+    {
+      "name" : "All Layer Groups",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectAllGroups",
+      "identifier" : "select-all-groups"
+    },
+    {
+      "name" : "All Bitmap Layers",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectAllBitmapLayers",
+      "identifier" : "select-all-bitmaps"
+    },
+    {
+      "name" : "Same Fill Color",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectSameFill",
+      "identifier" : "select-same-fill"
+    },
+    {
+      "name" : "Same Border Color",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectSameBorder",
+      "identifier" : "select-same-border"
+    },
+    {
+      "name" : "Layers Starting With…",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectStartingWith",
+      "identifier" : "select-starting-with"
+    },
+    {
+      "name" : "Layers Ending With…",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectEndingWith",
+      "identifier" : "select-ending-with"
+    },
+    {
+      "name" : "Layers with Text in Name…",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectContaining",
+      "identifier" : "select-containing"
+    },
+    {
+      "name" : "Parent Artboards",
+      "script" : "plugins/layer-tools/src/select.js",
+      "handler" : "selectParentArtboards",
+      "shortcut" : "cmd ctrl a",
+      "identifier" : "select-parent-artboards"
+    },
+    {
+      "name" : "Alphabetically",
+      "script" : "plugins/layer-tools/src/sort.js",
+      "handler" : "sortAlphabetically",
+      "identifier" : "sort-alphabetically"
+    },
+    {
+      "name" : "By Vertical Position",
+      "script" : "plugins/layer-tools/src/sort.js",
+      "handler" : "sortByVerticalPosition",
+      "identifier" : "sort-vertically"
+    },
+    {
+      "name" : "By Horizontal Position",
+      "script" : "plugins/layer-tools/src/sort.js",
+      "handler" : "sortByHorizontalPosition",
+      "identifier" : "sort-horizontally"
+    },
+    {
+      "name" : "Reverse",
+      "script" : "plugins/layer-tools/src/sort.js",
+      "handler" : "sortReverse",
+      "identifier" : "sort-reverse"
+    },
+    {
+      "name" : "Toggle Layers",
+      "script" : "plugins/layer-tools/src/toggle.js",
+      "handler" : "toggleLayers",
+      "shortcut" : "cmd l",
+      "identifier" : "toggle-layers"
+    },
+    {
+      "name" : "Toggle Layers Settings…",
+      "script" : "plugins/layer-tools/src/toggle.js",
+      "handler" : "toggleLayersSettings",
+      "identifier" : "toggle-layers-settings"
+    },
+    {
+      "name" : "Find and Replace in Selected… BROKEN",
+      "script" : "plugins/layer-tools/src/rename.js",
+      "handler" : "findReplaceSelected",
+      "identifier" : "rename-find-replace-selected"
+    },
+    {
+      "name" : "Find and Replace in All… BROKEN",
+      "script" : "plugins/layer-tools/src/rename.js",
+      "handler" : "findReplaceAll",
+      "identifier" : "rename-find-replace-all"
+    },
+    {
+      "name" : "Append",
+      "script" : "plugins/layer-tools/src/rename.js",
+      "handler" : "appendToSelected",
+      "identifier" : "rename-append-selected"
+    },
+    {
+      "name" : "Prepend",
+      "script" : "plugins/layer-tools/src/rename.js",
+      "handler" : "prependSelected",
+      "identifier" : "rename-prepend-selected"
+    },
+    {
+      "name" : "Remove 'copy' from All Layer Names BROKEN",
+      "script" : "plugins/layer-tools/src/rename.js",
+      "handler" : "removeCopy",
+      "identifier" : "rename-remove-copy"
+    },
+    {
+      "name" : "Rename Selected",
+      "identifier" : "rename-selected",
+      "script" : "plugins/rename-it/renameIt.sketchscript",
+      "handler" : "renameSelectedLayers",
+      "shortcut" : "ctrl cmd r"
+    },
+    {
+      "name" : "Find and Replace",
+      "identifier" : "find-and-replace",
+      "script" : "plugins/rename-it/findReplace.sketchscript",
+      "handler" : "findReplace",
+      "shortcut" : "ctrl option cmd r"
+    }
+  ],
+  "menu" : {
+    "isRoot" : true,
+    "items" : [
+      {
+        "title" : "Select",
+        "items" : [
+          "select-parent-artboards",
+          "select-all-artboards",
+          "select-starting-with",
+          "select-ending-with",
+          "select-containing",
+        ]
+      },
+      {
+        "title" : "Sort",
+        "items" : [
+          "sort-alphabetically",
+          "sort-vertically",
+          "sort-horizontally",
+          "sort-reverse"
+        ]
+      },
+      {
+        "title" : "Toggle",
+        "items" : [
+          "toggle-layers",
+          "toggle-layers-settings"
+        ]
+      },
+      {
+        "title" : "Rename",
+        "items" : [
+          "rename-selected",
+          "find-and-replace",
+          "rename-prepend-selected",
+          "rename-append-selected"
+        ]
+      }
+    ]
+  }
+}

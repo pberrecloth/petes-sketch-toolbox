@@ -1,0 +1,24 @@
+{
+  "author" : "Ale Muñoz",
+  "commands" : [
+    {
+      "script" : "script.cocoascript",
+      "name" : "Remove Unused Symbols",
+      "handlers" : {
+        "run" : "onRun"
+      },
+      "identifier" : "com.sketchapp.plugins.remove-unused-symbols"
+    }
+  ],
+  "menu" : {
+    "items" : [
+      "com.sketchapp.plugins.remove-unused-symbols"
+    ],
+    "title" : "Remove Unused Symbols"
+  },
+  "identifier" : "com.sketchapp.plugins.remove-unused-symbols",
+  "version" : "1.0",
+  "description" : "Removes all Symbol masters that have no instances in the document",
+  "authorEmail" : "ale@sketchapp.com",
+  "name" : "Remove Unused Symbols"
+}

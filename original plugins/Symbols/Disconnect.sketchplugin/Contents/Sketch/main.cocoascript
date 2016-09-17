@@ -1,0 +1,207 @@
+
+
+//
+//  Created by Emin İnanç Ünlü
+//
+
+
+/* 
+The MIT License (MIT)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+
+@import 'utility.cocoascript'
+
+
+//--------------------------------------
+// Global Variables
+//--------------------------------------
+
+
+var doc,
+	command,
+	selection,
+	scriptPath,
+	scriptFolder,
+	app = [NSApplication sharedApplication],
+	defaults = [NSUserDefaults standardUserDefaults],
+	
+	kPluginName = "Disconnect",
+	kHelperAppName = "PluginHelper.app",
+	kPluginDomain = "com.einancunlu.sketch-plugins.disconnect",
+
+	kHelperWindowSettingsKey = kPluginDomain + ".helperWindowSettings",
+	kLastUpdateCheckDayKey = kPluginDomain + ".lastUpdateCheckDayKey"
+
+
+//--------------------------------------
+// Menu Commands
+//--------------------------------------
+
+
+function disconnect(context) {
+	
+	initCommand(context)
+	
+	var selection = context.selection
+	if ([selection count] == 0) {
+		[doc showMessage: "Select something!"]
+		return
+	} 
+
+	var helperWindowSettings = [defaults objectForKey: kHelperWindowSettingsKey]
+	if (!helperWindowSettings) {
+		helperWindowSettings = {
+			groupSymbolsSwtich: 1,
+			layerStylesSwtich: 1,
+			textStylesSwtich: 1
+		}
+	}
+
+	// Create a params object to hold the info to be sent to Plugin Helper.
+	// This object will be converted to JSON and will be accessible in Xcode.
+	var params = {
+		selectionCount: [selection count],
+		settings: helperWindowSettings
+	}
+	
+	// Send parameters to Plugin Helper
+	sendParamsToHelperApp(context, kHelperAppName, params) 
+}
+
+function feedbackByMail(context) {
+	
+	initCommand(context)
+	
+	var encodedSubject = [NSString stringWithFormat:@"SUBJECT=%@", [@"Feedback on the Disconnect Plugin" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]],
+	encodedBody = [NSString stringWithFormat:@"BODY=%@", [@"" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]],
+	encodedTo = [[NSString stringWithFormat:@"apps.einancunlu", @"@gma", @"il.com"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+	encodedURLString = [NSString stringWithFormat:@"mailto:%@?%@&%@", encodedTo, encodedSubject, encodedBody],
+	mailtoURL = [NSURL URLWithString:encodedURLString]
+	[[NSWorkspace sharedWorkspace] openURL:mailtoURL] 
+}
+
+function feedbackByTwitter(context) {
+	
+	initCommand(context)
+	
+	var urlString = "https://twitter.com/einancunlu"
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: urlString]]
+}
+
+function initCommand(context) {
+	
+	doc = context.document
+	command = context.command 
+	selection = context.selection
+	scriptPath = context.scriptPath
+	scriptFolder = [scriptPath stringByDeletingLastPathComponent]
+	
+	if (isTodayNewDay() && checkPluginUpdate()) {
+		app.displayDialog_withTitle("Please redownload the plugin to install the new version.", "There is a new version of the plugin!")
+	}
+}
+
+
+//--------------------------------------
+// Plugin Window Functions
+//--------------------------------------
+
+
+function disconnectSelection(context, groupSymbols, layerStyles, textStyles) {
+	
+	scriptPath = context.scriptPath
+	scriptFolder = [scriptPath stringByDeletingLastPathComponent]
+	
+	var newHelperWindowSettings = {
+		groupSymbolsSwtich: groupSymbols,
+		layerStylesSwtich: layerStyles,
+		textStylesSwtich: textStyles
+	}
+	saveObjectToUserDefaults(newHelperWindowSettings, kHelperWindowSettingsKey)
+	
+	selection = context.selection 
+	for (var i = 0; i < [selection count]; i++) {
+    	var layer = selection.objectAtIndex(i)
+	    var children = layer.children()
+	    for (var j = 0; j < [children count]; j++) {
+	    	var childLayer = children[j]
+			unlink(childLayer, groupSymbols, layerStyles, textStyles)
+		}
+	}
+	doc.reloadInspector()
+	[doc showMessage: "Disconnection process is completed."]
+}
+
+
+//--------------------------------------
+// Helper Functions
+//--------------------------------------
+
+
+function unlink(layer, groupSymbols, layerStyles, textStyles) {
+	 
+	if (getSketchVersionNumber() >= 370) {
+		if ([layer class] === MSSymbolInstance && groupSymbols) {
+			detachSymbolInstance(layer, groupSymbols, layerStyles, textStyles)
+		}
+	} else {
+		if ([layer class] === MSLayerGroup && groupSymbols) {
+			layer.setSharedObjectID(null)
+		} 
+	}
+	if ([layer class] === MSTextLayer && textStyles) {
+		if (layer.style != undefined) {
+			layer.style().setSharedObjectID(null)
+		}
+	} else if ([layer class] !== MSLayerGroup && [layer class] !== MSTextLayer && layerStyles) {
+		if (layer.style != undefined) {
+			layer.style().setSharedObjectID(null)
+		}
+	}
+}
+
+function detachSymbolInstance(layer, groupSymbols, layerStyles, textStyles) {
+	
+	var detachedGroup = layer.detachByReplacingWithGroup()
+	var children = detachedGroup.children()
+    for (var i = 0; i < [children count]; i++) {
+    	var childLayer = children.objectAtIndex(i)
+		unlink(childLayer, groupSymbols, layerStyles, textStyles)
+	}
+}
+
+function isTodayNewDay() {
+	
+	var lastUpdateCheckDay = [defaults objectForKey: kLastUpdateCheckDayKey]
+	
+	var formatter = [[NSDateFormatter alloc] init]
+	[formatter setDateStyle: NSDateFormatterShortStyle]
+	var today = [formatter stringFromDate: [NSDate date]]
+	saveObjectToUserDefaults(today, kLastUpdateCheckDayKey)
+	
+	if (lastUpdateCheckDay) {
+		return lastUpdateCheckDay != today
+	} else {
+		return true
+	}
+}
+

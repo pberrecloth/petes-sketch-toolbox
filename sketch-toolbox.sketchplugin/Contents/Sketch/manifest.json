@@ -246,13 +246,48 @@
       "name": "Update All Bitmaps",
       "script": "plugins/place-linked-bitmap/handlers.cocoascript",
       "shortcut": "control command u"
+    },
+    {
+    "handler" : "swapFillAndBorder",
+    "identifier" : "swap-fill-and-border",
+    "name" : "Swap Fill And Border",
+    "script" : "plugins/swap-fill-border/Swap-Fill-Border.js",
+    "shortcut" : "shift command x",
+    },
+    {
+      "script" : "plugins/jump-to/sketch-navigator.cocoascript",
+      "handler" : "SketchNavigatorNavigate",
+      "shortcut" : "cmd e",
+      "name" : "Jump To...",
+      "identifier" : "jump-to"
+    },
+    {
+      "script" : "plugins/jump-to/sketch-navigator.cocoascript",
+      "handler" : "SketchNavigatorJumpBack",
+      "shortcut" : "cmd alt e",
+      "name" : "Jump Back",
+      "identifier" : "jump-back"
+    },
+    {
+      "script": "plugins/toggle-constrain-proportions/script.js",
+      "handler": "toggleConstrainProportions",
+      "name": "Toggle Constrain Proportions",
+      "identifier": "toggle-constrain-proportions",
+      "shortcut": ""
+    },
+    {
+      "script" : "plugins/clipboard-fill/script.cocoascript",
+      "handler" : "onRun",
+      "shortcut" : "ctrl alt v",
+      "name" : "Clipboard Fill ",
+      "identifier" : "clipboard-fill "
     }
   ],
   "menu" : {
     "isRoot" : true,
     "items" : [
       {
-        "title" : "Select",
+        "title" : "/ Select",
         "items" : [
           "select-all-artboards",
           "select-parent-artboards",
@@ -292,7 +327,7 @@
         ]
       },
       {
-        "title" : "Sort",
+        "title" : "/ Sort",
         "items" : [
           "sort-alphabetically",
           "sort-vertically",
@@ -301,15 +336,18 @@
         ]
       },
       {
-        "title" : "Toggle",
+        "title" : "/ Toggle",
         "items" : [
           "toggle-layers",
           "toggle-layers-settings"
         ]
       },
       {
-        "title" : "View",
+        "title" : "/ View",
         "items" : [
+          "jump-to",
+          "jump-back",
+          "-",
           "toggle-grid-on-selection",
           "toggle-layout-on-selection",
           "-",
@@ -318,27 +356,30 @@
         ]
       },
       {
-        "title" : "Export",
+        "title" : "/ Export",
         "items" : [
           "-",
         ]
       },
       {
-        "title" : "Insert",
+        "title" : "/ Insert",
         "items" : [
           "PLB-placebitmapasnewlayer",
           "PLB-placebitmapasfill",
-          "PLB-updatebitmaps"
+          "PLB-updatebitmaps",
+          "clipboard-fill"
         ]
       },
       {
-        "title" : "Transform",
+        "title" : "/ Transform",
         "items" : [
+          "swap-fill-and-border",
           "-",
+          "toggle-constrain-proportions"
         ]
       },
       {
-        "title" : "Rename",
+        "title" : "/ Rename",
         "items" : [
           "rename-selected",
           "find-and-replace",
@@ -346,6 +387,9 @@
           "rename-prepend-selected",
           "rename-append-selected"
         ]
+      },
+      {
+          "item" : "/ ______________________",
       }
     ]
   }

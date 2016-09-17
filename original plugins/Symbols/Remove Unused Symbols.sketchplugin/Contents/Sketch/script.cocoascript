@@ -1,0 +1,9 @@
+var onRun = function(context) {
+  var symbolMasters = context.document.documentData().allSymbols()
+  for (var i=0; i < symbolMasters.count(); i++) {
+    var master = symbolMasters.objectAtIndex(i)
+    if(!master.hasInstances()) {
+      master.removeFromParent()
+    }
+  }
+}

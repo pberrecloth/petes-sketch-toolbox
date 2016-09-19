@@ -1,0 +1,12 @@
+{
+    "name" : "Convert layer names to lowercase",
+    "identifier" : "com.sketchapp.plugin.convert-layer-names-to-lowercase",
+    "version" : "0.1",
+    "description" : "Convert layer names to lowercase.",
+    "commands" : [{
+        "script" : "script.js",
+        "handler" : "onRun",
+        "name" : "Convert layer names to lowercase",
+        "identifier" : "convert-layer-names-to-lowercase"
+    }]
+}

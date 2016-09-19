@@ -302,6 +302,11 @@
       "name" : "Organize Selected Symbols",
       "identifier" : "organize-symbols",
     },
+    {
+      "name" : "Convert Layer Names To Lowercase",
+      "identifier" : "convert-layer-names-to-lowercase",
+      "script" : "plugins/convert-layer-names-to-lowercase/script.js",
+    },
   ],
   "menu" : {
     "isRoot" : true,
@@ -414,7 +419,9 @@
           "find-and-replace",
           "-",
           "rename-prepend-selected",
-          "rename-append-selected"
+          "rename-append-selected",
+          "-",
+          "convert-layer-names-to-lowercase"
         ]
       }
     ]

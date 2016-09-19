@@ -283,14 +283,14 @@
       "identifier" : "clipboard-fill"
     },
     {
+        "name": "Detach Selected Symbols Or Styles",
         "handler": "disconnect",
         "identifier": "detach-selected-symbols",
-        "name": "Disconnect",
         "shortcut": "shift control alt d",
         "script": "plugins/disconnect/main.cocoascript"
     },
     {
-        "name" : "Delete Unused Symbols",
+        "name" : "Remove Unused Symbols",
         "script" : "plugins/delete-unused-symbols/script.cocoascript",
         "handler" : "deleteUnusedSymbols",
         "identifier" : "delete-unused-symbols"

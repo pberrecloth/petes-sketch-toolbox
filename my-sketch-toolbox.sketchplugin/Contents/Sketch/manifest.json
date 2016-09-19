@@ -306,6 +306,7 @@
       "name" : "Convert Layer Names To Lowercase",
       "identifier" : "convert-layer-names-to-lowercase",
       "script" : "plugins/convert-layer-names-to-lowercase/script.js",
+      "handler" : "convertLayerNamestoLowercase",
     },
   ],
   "menu" : {

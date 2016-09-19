@@ -5,11 +5,11 @@ var convertLayerNamestoLowercase = function(context) {
     for (var i=0; i<selection.count(); i++) {
 
         var layer = selection[i]
-
+        var name = layer.name;
         // convert to lowercase
-        
+
+
+
         }
     }
-
-    context.document.reloadInspector()
 };

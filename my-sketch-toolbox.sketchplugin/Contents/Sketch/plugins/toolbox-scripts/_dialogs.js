@@ -52,7 +52,7 @@ function alert(message, title) {
       alert.setMessageText(message);
     }
     alert.addButtonWithTitle('OK');
-    alert.setIcon(NSImage.alloc().initByReferencingFile(plugin.urlForResourceNamed("icon@2x.png").path()));
+    // alert.setIcon(NSImage.alloc().initByReferencingFile(plugin.urlForResourceNamed("icon@2x.png").path()));
     var responseCode = alert.runModal();
 }
 

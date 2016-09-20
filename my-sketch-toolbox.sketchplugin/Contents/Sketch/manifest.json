@@ -308,6 +308,12 @@
       "script" : "plugins/toolbox-scripts/script.js",
       "handler" : "convertLayerNamestoLowercase",
     },
+    {
+      "name" : "Display Layer Count",
+      "identifier" : "display-layer-count",
+      "script" : "plugins/toolbox-scripts/script.js",
+      "handler" : "displayLayerCount",
+    },
   ],
   "menu" : {
     "isRoot" : true,
@@ -386,7 +392,9 @@
           "toggle-layout-on-selection",
           "-",
           "toggle-grid-on-all-artboards",
-          "toggle-layout-on-all-artboards"
+          "toggle-layout-on-all-artboards",
+          "-",
+          "display-layer-count"
         ]
       },
       {

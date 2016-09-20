@@ -2,12 +2,11 @@
 
 var convertLayerNamestoLowercase = function(context) {
 
-    var doc = context.document;
-    var selection = context.selection
     var selectionCount = selection.count();
     var processCount = 0;
 
     if (selectionCount == 0) {
+      alert('No layers selected');
     	doc.showMessage("Select at least one layer");
       } else {
 
@@ -22,4 +21,10 @@ var convertLayerNamestoLowercase = function(context) {
 
       doc.showMessage("Processed " + processCount + " layer(s)");
     }
-};
+}
+var displayLayerCount = function(context) {
+  initContext(context)
+  var selectionCount = selection.count();
+  doc.showMessage(selectionCount + " layer(s) selected");
+
+}

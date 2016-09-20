@@ -1,7 +1,8 @@
 @import "_includes.js";
 
 var convertLayerNamestoLowercase = function(context) {
-
+  
+    initContext(context);
     var selectionCount = selection.count();
     var processCount = 0;
 
@@ -23,7 +24,7 @@ var convertLayerNamestoLowercase = function(context) {
     }
 }
 var displayLayerCount = function(context) {
-  initContext(context)
+  initContext(context);
   var selectionCount = selection.count();
   doc.showMessage(selectionCount + " layer(s) selected");
 

@@ -314,6 +314,12 @@
       "script" : "plugins/toolbox-scripts/script.js",
       "handler" : "displayLayerCount",
     },
+    {
+      "name" : "Butt Up Selection",
+      "identifier" : "buttUpSelection",
+      "script" : "plugins/toolbox-scripts/script.js",
+      "handler" : "buttUpSelection",
+    },
   ],
   "menu" : {
     "isRoot" : true,
@@ -417,6 +423,7 @@
         "title" : "✪  Transform",
         "items" : [
           "swap-fill-and-border",
+          "buttUpSelection",
           "-",
           "toggle-constrain-proportions"
         ]

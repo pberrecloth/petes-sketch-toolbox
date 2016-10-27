@@ -315,10 +315,16 @@
       "handler" : "displayLayerCount",
     },
     {
-      "name" : "Butt Up Selection",
-      "identifier" : "buttUpSelection",
+      "name" : "Butt Selection Up",
+      "identifier" : "buttSelectionUp",
       "script" : "plugins/toolbox-scripts/script.js",
-      "handler" : "buttUpSelection",
+      "handler" : "buttSelectionUp",
+    },
+    {
+      "name" : "Butt Selection Left",
+      "identifier" : "buttSelectionLeft",
+      "script" : "plugins/toolbox-scripts/script.js",
+      "handler" : "buttSelectionLeft",
     },
   ],
   "menu" : {
@@ -423,7 +429,8 @@
         "title" : "✪  Transform",
         "items" : [
           "swap-fill-and-border",
-          "buttUpSelection",
+          "buttSelectionUp",
+          "buttSelectionLeft",
           "-",
           "toggle-constrain-proportions"
         ]

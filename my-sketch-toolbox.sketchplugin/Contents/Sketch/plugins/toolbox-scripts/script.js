@@ -34,17 +34,14 @@ var displayLayerCount = function(context) {
 
 
 
-function buttUpSelection(context) {
-
+function buttSelectionUp(context) {
   // For this to work properly, you must run sort > by vertical position first.
   initContext(context);
   var selectionCount = selection.count();
   var processCount = 0;
 
-
-
   if (selectionCount <= 1) {
-    doc.showMessage("Select at least two layers to shunt");
+    doc.showMessage("Select at least two layers to butt together");
     } else {
       var sortVertically = [NSSortDescriptor sortDescriptorWithKey:"absoluteRect.rulerY" ascending:1]
       var sortedLayers = [selection sortedArrayUsingDescriptors:[sortVertically]];
@@ -76,9 +73,7 @@ function buttUpSelection(context) {
         var lastLayerBottomY = lastLayerY + lastLayerHeight;
       }
 
-
       layerFrame.setY(lastLayerBottomY);
-
 
       var lastLayer = layer;
       var lastLayerFrame = lastLayer.frame();
@@ -93,7 +88,53 @@ function buttUpSelection(context) {
     lastLayerBottomY = null;
     doc.showMessage("Processed " + processCount + " layer(s)");
   }
+}
+function buttSelectionLeft(context) {
+  // For this to work properly, you must run sort > by vertical position first.
+  initContext(context);
+  var selectionCount = selection.count();
+  var processCount = 0;
 
+  if (selectionCount <= 1) {
+    doc.showMessage("Select at least two layers to butt together");
+    } else {
+      var sortHorizontally = [NSSortDescriptor sortDescriptorWithKey:"absoluteRect.rulerX" ascending:1]
+      var sortedLayers = [selection sortedArrayUsingDescriptors:[sortHorizontally]];
+      sortSelectedLayersInList(sortedLayers);
+
+    for (var i=0; i<selectionCount; i++) {
+      var layer = sortedLayers[i]
+      // Get layer properties
+      var layerFrame = layer.frame();
+      var layerWidth = layerFrame.width();
+      var layerX = layerFrame.x();
+
+      if (!lastLayer){
+        var lastLayer = layer
+        var lastLayerFrame = lastLayer.frame();
+        var lastLayerWidth = lastLayerFrame.width();
+        var lastLayerX = lastLayerFrame.x();
+        var lastLayerBottomX = lastLayerX;
+      } else {
+        var lastLayerFrame = lastLayer.frame();
+        var lastLayerWidth = lastLayerFrame.width();
+        var lastLayerX = lastLayerFrame.x();
+        var lastLayerBottomX = lastLayerX + lastLayerWidth;
+      }
+
+      layerFrame.setX(lastLayerBottomX);
+
+      var lastLayer = layer;
+      var lastLayerFrame = lastLayer.frame();
+      var lastLayerWidth = lastLayerFrame.width();
+      var lastLayerX = lastLayerFrame.x();
+
+      processCount++
+    }
+    lastLayer = null;
+    lastLayerBottomX = null;
+    doc.showMessage("Processed " + processCount + " layer(s)");
+  }
 }
 
 // ------------------------- UTILS ----------------------- //

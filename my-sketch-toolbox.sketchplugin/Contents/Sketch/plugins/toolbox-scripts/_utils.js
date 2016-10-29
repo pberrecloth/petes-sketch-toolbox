@@ -15,5 +15,7 @@ function initContext(context) {
         page = doc.currentPage(),
         pages = doc.pages(),
         artboard = page.currentArtboard(),
-        selection = context.selection
+        selection = context.selection,
+        selectionCount = selection.count()
+
     }

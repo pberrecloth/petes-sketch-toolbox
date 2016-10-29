@@ -73,7 +73,7 @@
       "name" : "Parent Artboards",
       "script" : "plugins/layer-tools/src/select.js",
       "handler" : "selectParentArtboards",
-      "shortcut" : "cmd ctrl a",
+      "shortcut" : "cmd shift alt a",
       "identifier" : "select-parent-artboards"
     },
     {
@@ -114,18 +114,6 @@
       "identifier" : "toggle-layers-settings"
     },
     {
-      "name" : "Find and Replace in Selected… BROKEN",
-      "script" : "plugins/layer-tools/src/rename.js",
-      "handler" : "findReplaceSelected",
-      "identifier" : "rename-find-replace-selected"
-    },
-    {
-      "name" : "Find and Replace in All… BROKEN",
-      "script" : "plugins/layer-tools/src/rename.js",
-      "handler" : "findReplaceAll",
-      "identifier" : "rename-find-replace-all"
-    },
-    {
       "name" : "Append Selected",
       "script" : "plugins/layer-tools/src/rename.js",
       "handler" : "appendToSelected",
@@ -151,11 +139,23 @@
       "shortcut" : "ctrl cmd r"
     },
     {
-      "name" : "Find and Replace",
-      "identifier" : "find-and-replace",
-      "script" : "plugins/rename-it/findReplace.sketchscript",
+      "name" : "Find And Replace",
+      "identifier" : "findReplace",
+      "script" : "plugins/toolbox-scripts/findAndReplace.js",
       "handler" : "findReplace",
-      "shortcut" : "ctrl option cmd r"
+      "shortcut" : "ctrl shift f"
+    },
+    {
+      "name" : "Find and Replace in Selected… BROKEN",
+      "script" : "plugins/layer-tools/src/rename.js",
+      "handler" : "findReplaceSelected",
+      "identifier" : "rename-find-replace-selected"
+    },
+    {
+      "name" : "Find and Replace in All… BROKEN",
+      "script" : "plugins/layer-tools/src/rename.js",
+      "handler" : "findReplaceAll",
+      "identifier" : "rename-find-replace-all"
     },
     {
       "name" : "Toggle Grid",
@@ -317,15 +317,31 @@
     {
       "name" : "Butt Selection Up",
       "identifier" : "buttSelectionUp",
-      "script" : "plugins/toolbox-scripts/script.js",
+      "script" : "plugins/toolbox-scripts/butter.js",
       "handler" : "buttSelectionUp",
+      "shortcut" : ""
+    },
+    {
+      "name" : "Butt Selection Down",
+      "identifier" : "buttSelectionDown",
+      "script" : "plugins/toolbox-scripts/butter.js",
+      "handler" : "buttSelectionDown",
+      "shortcut" : ""
     },
     {
       "name" : "Butt Selection Left",
       "identifier" : "buttSelectionLeft",
-      "script" : "plugins/toolbox-scripts/script.js",
+      "script" : "plugins/toolbox-scripts/butter.js",
       "handler" : "buttSelectionLeft",
+      "shortcut" : ""
     },
+    {
+      "name" : "Butt Selection Right",
+      "identifier" : "buttSelectionRight",
+      "script" : "plugins/toolbox-scripts/butter.js",
+      "handler" : "buttSelectionRight",
+      "shortcut" : ""
+    }
   ],
   "menu" : {
     "isRoot" : true,
@@ -429,8 +445,11 @@
         "title" : "✪  Transform",
         "items" : [
           "swap-fill-and-border",
+          "-",
           "buttSelectionUp",
+          "buttSelectionDown",
           "buttSelectionLeft",
+          "buttSelectionRight",
           "-",
           "toggle-constrain-proportions"
         ]
@@ -439,7 +458,7 @@
         "title" : "✪  Rename",
         "items" : [
           "rename-selected",
-          "find-and-replace",
+          "findReplace",
           "-",
           "rename-prepend-selected",
           "rename-append-selected",

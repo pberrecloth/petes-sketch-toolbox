@@ -47,19 +47,19 @@ function createDialog()
 {
 	var alert = COSAlertWindow.new();
 
-	function createTextFieldWithLavel(label,defaultValue) {
+	function createTextFieldWithLabel(label,defaultValue) {
 			alert.addTextLabelWithValue(label);
 			alert.addTextFieldWithValue(defaultValue);
 	}
 
-	alert.setMessageText("Find & Replace");
+	alert.setMessageText("Find And Replace");
 	alert.setInformativeText("Find and replace text in the selected layer(s) * CASE SENSITIVE *");
 
 	// Name
-	createTextFieldWithLavel("Find:","");
+	createTextFieldWithLabel("Find:","");
 
 	// Interator
-	createTextFieldWithLavel("Replace with:","");
+	createTextFieldWithLabel("Replace with:","");
 
 	// Actions buttons.
 	alert.addButtonWithTitle('OK');

@@ -23,9 +23,3 @@ var convertLayerNamestoLowercase = function(context) {
       doc.showMessage("Processed " + processCount + " layer(s)");
     }
 }
-var displayLayerCount = function(context) {
-  initContext(context);
-  var selectionCount = selection.count();
-  doc.showMessage(selectionCount + " layer(s) selected");
-
-}

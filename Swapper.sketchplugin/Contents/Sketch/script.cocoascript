@@ -1,0 +1,34 @@
+var swapElementsTopLeft = function(context) {
+	var selection = context.selection;
+
+	if ([selection count] == 2) {
+		var layer = [selection objectAtIndex:0],
+			layer2 = [selection objectAtIndex:1];
+			
+			var origin1 = [[layer frame] origin];
+			var origin2 = [[layer2 frame] origin];
+            
+			[[layer frame] setOrigin:origin2];
+            [[layer2 frame] setOrigin:origin1];
+	}
+
+}
+
+var swapElementsMidPoint = function(context) {
+	var selection = context.selection;
+
+	if ([selection count] == 2) {
+		var layer = [selection objectAtIndex:0],
+			layer2 = [selection objectAtIndex:1];
+
+            var frame1 = [layer frame];
+            var frame2 = [layer2 frame];
+
+            var centerToOrigin1 = NSMakePoint([frame2 midX] - [frame1 width] / 2, [frame2 midY] - [frame1 height] / 2);
+            var centerToOrigin2 = NSMakePoint([frame1 midX] - [frame2 width] / 2, [frame1 midY] - [frame2 height] / 2)
+
+            [[layer frame] setOrigin: centerToOrigin1];
+            [[layer2 frame] setOrigin: centerToOrigin2];
+    }
+}
+

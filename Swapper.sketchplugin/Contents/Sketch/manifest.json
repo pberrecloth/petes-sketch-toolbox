@@ -1,0 +1,25 @@
+{
+  "name": "Swapper",
+  "description": "Sketch App plugin to swap positions of two elements",
+  "author": "interacthings",
+  "authorEmail" : "hello@interacthings.com",
+  "homepage": "http://github.com/interacthings/swap-elements",
+  "version": 1.0,
+  "identifier": "com.swapper.sketchplugin",
+  "commands": [
+    {
+      "name": "Swap positions",
+      "identifier": "topleft",
+      "shortcut": "",
+      "script": "script.cocoascript",
+      "handler": "swapElementsTopLeft"
+    }
+  ],
+  "menu": {
+    "title": "Swap Elements",
+    "isRoot":true,
+    "items": [
+      "topleft"
+    ]
+  }
+}
